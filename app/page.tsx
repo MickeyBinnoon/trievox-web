@@ -5,22 +5,22 @@ import { Button, Card, CardHeader, CardTitle, CardDescription } from "@/componen
 export default function Home() {
   return (
     <>
-      {/* Hero Section */}
-      <Section spacing="xl" background="primary">
+      {/* Hero Section - Gradient mesh background with floating orbs */}
+      <Section spacing="xl" background="mesh" withOrbs>
         <Container>
-          <Stack gap="lg" align="center" className="text-center">
-            <h1 className="text-4xl font-bold md:text-5xl lg:text-6xl">
-              [Hero Headline]
+          <Stack gap="lg" align="center" className="text-center relative z-10">
+            <h1 className="text-4xl font-extrabold md:text-5xl lg:text-6xl gradient-text tracking-tight">
+              הופכים רעיונות לתוצאות דיגיטליות
             </h1>
-            <p className="max-w-2xl text-lg opacity-90">
-              [Hero description text - brief value proposition]
+            <p className="max-w-2xl text-lg text-muted-foreground leading-relaxed">
+              Trievox מלווה עסקים בדרך להצלחה דיגיטלית עם שיווק חכם, אתרים מרשימים ואוטומציות שחוסכות זמן ומשאבים.
             </p>
-            <Stack direction="row" gap="md" className="flex-wrap justify-center">
-              <Button size="lg" variant="secondary" asChild>
-                <Link href="/contact">[Primary CTA]</Link>
+            <Stack direction="row" gap="md" className="flex-wrap justify-center pt-2">
+              <Button size="lg" variant="gradient" asChild>
+                <Link href="/contact">בואו נדבר</Link>
               </Button>
               <Button size="lg" variant="outline" asChild>
-                <Link href="/services">[Secondary CTA]</Link>
+                <Link href="/services">השירותים שלנו</Link>
               </Button>
             </Stack>
           </Stack>
@@ -28,90 +28,67 @@ export default function Home() {
       </Section>
 
       {/* Services Overview */}
-      <Section spacing="lg">
+      <Section spacing="lg" background="default">
         <Container>
-          <Stack gap="lg">
+          <Stack gap="xl">
             <Stack gap="sm" align="center" className="text-center">
-              <h2 className="text-3xl font-bold">[Services Section Title]</h2>
-              <p className="max-w-2xl text-muted-foreground">
-                [Services section description]
+              <h2 className="text-3xl font-bold tracking-tight">מה אנחנו עושים?</h2>
+              <p className="max-w-2xl text-muted-foreground leading-relaxed">
+                אנחנו מציעים מגוון פתרונות דיגיטליים שיעזרו לעסק שלכם לצמוח ולהתבלט
               </p>
             </Stack>
-            <Grid cols={3} gap="md">
-              <Card>
+            <Grid cols={3} gap="lg">
+              <Card variant="glass">
                 <CardHeader>
-                  <CardTitle>[Service 1]</CardTitle>
-                  <CardDescription>[Service 1 brief description]</CardDescription>
+                  <div className="mb-5 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-[#00d4ff] to-[#c026d3] text-3xl shadow-[0_0_25px_rgba(0,212,255,0.3)]">
+                    📈
+                  </div>
+                  <CardTitle className="text-xl">שיווק דיגיטלי</CardTitle>
+                  <CardDescription className="leading-relaxed">קמפיינים ממוקדים שמביאים לקוחות איכותיים ומגדילים את החשיפה שלכם ברשת</CardDescription>
                 </CardHeader>
               </Card>
-              <Card>
+              <Card variant="glass">
                 <CardHeader>
-                  <CardTitle>[Service 2]</CardTitle>
-                  <CardDescription>[Service 2 brief description]</CardDescription>
+                  <div className="mb-5 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-[#00d4ff] to-[#c026d3] text-3xl shadow-[0_0_25px_rgba(0,212,255,0.3)]">
+                    💻
+                  </div>
+                  <CardTitle className="text-xl">בניית אתרים</CardTitle>
+                  <CardDescription className="leading-relaxed">אתרים מעוצבים ומותאמים אישית שמספרים את הסיפור שלכם ומניעים לפעולה</CardDescription>
                 </CardHeader>
               </Card>
-              <Card>
+              <Card variant="glass">
                 <CardHeader>
-                  <CardTitle>[Service 3]</CardTitle>
-                  <CardDescription>[Service 3 brief description]</CardDescription>
+                  <div className="mb-5 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-[#00d4ff] to-[#c026d3] text-3xl shadow-[0_0_25px_rgba(0,212,255,0.3)]">
+                    ⚙️
+                  </div>
+                  <CardTitle className="text-xl">אוטומציות עסקיות</CardTitle>
+                  <CardDescription className="leading-relaxed">פתרונות חכמים שמייעלים תהליכים, חוסכים זמן ומאפשרים לכם להתמקד בעיקר</CardDescription>
                 </CardHeader>
               </Card>
             </Grid>
-            <div className="text-center">
+            <div className="text-center pt-4">
               <Button variant="outline" asChild>
-                <Link href="/services">[View All Services]</Link>
+                <Link href="/services">לכל השירותים</Link>
               </Button>
             </div>
           </Stack>
         </Container>
       </Section>
 
-      {/* Testimonials / Social Proof */}
-      <Section spacing="lg" background="muted">
-        <Container>
-          <Stack gap="lg">
-            <Stack gap="sm" align="center" className="text-center">
-              <h2 className="text-3xl font-bold">[Testimonials Section Title]</h2>
-              <p className="max-w-2xl text-muted-foreground">
-                [Testimonials section description]
-              </p>
-            </Stack>
-            <Grid cols={3} gap="md">
-              <Card>
-                <CardHeader>
-                  <CardDescription>&quot;[Testimonial 1 quote]&quot;</CardDescription>
-                  <CardTitle className="text-base">[Client 1 Name]</CardTitle>
-                </CardHeader>
-              </Card>
-              <Card>
-                <CardHeader>
-                  <CardDescription>&quot;[Testimonial 2 quote]&quot;</CardDescription>
-                  <CardTitle className="text-base">[Client 2 Name]</CardTitle>
-                </CardHeader>
-              </Card>
-              <Card>
-                <CardHeader>
-                  <CardDescription>&quot;[Testimonial 3 quote]&quot;</CardDescription>
-                  <CardTitle className="text-base">[Client 3 Name]</CardTitle>
-                </CardHeader>
-              </Card>
-            </Grid>
-          </Stack>
-        </Container>
-      </Section>
-
       {/* CTA Section */}
-      <Section spacing="lg">
+      <Section spacing="lg" background="mesh" withOrbs>
         <Container size="md">
-          <Stack gap="md" align="center" className="text-center">
-            <h2 className="text-3xl font-bold">[CTA Section Title]</h2>
-            <p className="text-muted-foreground">
-              [CTA section description - encourage action]
-            </p>
-            <Button size="lg" asChild>
-              <Link href="/contact">[Contact CTA]</Link>
-            </Button>
-          </Stack>
+          <Card variant="gradient" className="p-8 md:p-12 relative z-10">
+            <Stack gap="lg" align="center" className="text-center">
+              <h2 className="text-3xl font-bold tracking-tight">מוכנים להתחיל?</h2>
+              <p className="text-muted-foreground max-w-lg leading-relaxed">
+                ספרו לנו על העסק שלכם ונבנה יחד תוכנית פעולה שתקדם אתכם קדימה
+              </p>
+              <Button size="lg" variant="gradient" asChild>
+                <Link href="/contact">צרו קשר עכשיו</Link>
+              </Button>
+            </Stack>
+          </Card>
         </Container>
       </Section>
     </>

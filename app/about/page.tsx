@@ -5,38 +5,38 @@ import { Button, Card, CardHeader, CardTitle, CardDescription } from "@/componen
 
 export const metadata: Metadata = {
   title: "אודות | Trievox",
-  description: "[About page description for SEO]",
+  description: "הכירו את Trievox - סוכנות דיגיטלית שמלווה עסקים בדרך להצלחה עם שיווק, אתרים ואוטומציות",
 };
 
 export default function AboutPage() {
   return (
     <>
       {/* Hero Section */}
-      <Section spacing="lg" background="muted">
+      <Section spacing="lg" background="mesh">
         <Container>
           <Stack gap="md" align="center" className="text-center">
-            <h1 className="text-4xl font-bold md:text-5xl">[About Page Title]</h1>
+            <h1 className="text-4xl font-bold md:text-5xl gradient-text">הסיפור שלנו</h1>
             <p className="max-w-2xl text-lg text-muted-foreground">
-              [About page subtitle / tagline]
+              אנחנו מאמינים שכל עסק ראוי לנוכחות דיגיטלית מנצחת
             </p>
           </Stack>
         </Container>
       </Section>
 
       {/* Company Story */}
-      <Section spacing="lg">
+      <Section spacing="lg" background="default">
         <Container size="md">
           <Stack gap="lg">
-            <h2 className="text-3xl font-bold">[Our Story Title]</h2>
+            <h2 className="text-3xl font-bold">איך הכל התחיל</h2>
             <Stack gap="md">
-              <p className="text-muted-foreground">
-                [Company story paragraph 1 - founding, origins]
+              <p className="text-muted-foreground leading-relaxed">
+                Trievox נולדה מתוך הבנה פשוטה: עסקים רבים יודעים שהם צריכים להיות נוכחים בדיגיטל, אבל לא תמיד יודעים איך. הקמנו את החברה כדי לגשר על הפער הזה ולהפוך את העולם הדיגיטלי לנגיש לכולם.
               </p>
-              <p className="text-muted-foreground">
-                [Company story paragraph 2 - growth, evolution]
+              <p className="text-muted-foreground leading-relaxed">
+                עם השנים צברנו ניסיון עשיר בעבודה עם עסקים מגוונים - מעסקים קטנים ועד חברות גדולות. למדנו שההצלחה האמיתית מגיעה כשמקשיבים, מבינים את הצרכים האמיתיים ובונים פתרונות מותאמים אישית.
               </p>
-              <p className="text-muted-foreground">
-                [Company story paragraph 3 - present day, vision]
+              <p className="text-muted-foreground leading-relaxed">
+                היום אנחנו גאים להיות השותפים הדיגיטליים של עשרות עסקים מצליחים. אנחנו ממשיכים לצמוח, ללמוד ולהתפתח - כי בעולם הדיגיטל, מי שעומד במקום נשאר מאחור.
               </p>
             </Stack>
           </Stack>
@@ -48,28 +48,37 @@ export default function AboutPage() {
         <Container>
           <Stack gap="lg">
             <Stack gap="sm" align="center" className="text-center">
-              <h2 className="text-3xl font-bold">[Mission & Values Title]</h2>
+              <h2 className="text-3xl font-bold">הערכים שמנחים אותנו</h2>
               <p className="max-w-2xl text-muted-foreground">
-                [Mission statement]
+                אנחנו מחויבים להצלחה של הלקוחות שלנו, ופועלים לפי עקרונות שמבטיחים תוצאות אמיתיות
               </p>
             </Stack>
             <Grid cols={3} gap="md">
-              <Card>
+              <Card variant="glass">
                 <CardHeader>
-                  <CardTitle>[Value 1]</CardTitle>
-                  <CardDescription>[Value 1 description]</CardDescription>
+                  <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-primary/20 text-primary text-2xl">
+                    👁️
+                  </div>
+                  <CardTitle>שקיפות מלאה</CardTitle>
+                  <CardDescription>אין הפתעות, אין עלויות נסתרות. אתם תמיד יודעים מה קורה, למה ומה התוצאות</CardDescription>
                 </CardHeader>
               </Card>
-              <Card>
+              <Card variant="glass">
                 <CardHeader>
-                  <CardTitle>[Value 2]</CardTitle>
-                  <CardDescription>[Value 2 description]</CardDescription>
+                  <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-secondary/20 text-secondary text-2xl">
+                    🤝
+                  </div>
+                  <CardTitle>שותפות אמיתית</CardTitle>
+                  <CardDescription>ההצלחה שלכם היא ההצלחה שלנו. אנחנו לא ספקים, אנחנו שותפים לדרך</CardDescription>
                 </CardHeader>
               </Card>
-              <Card>
+              <Card variant="glass">
                 <CardHeader>
-                  <CardTitle>[Value 3]</CardTitle>
-                  <CardDescription>[Value 3 description]</CardDescription>
+                  <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-xl bg-primary/20 text-primary text-2xl">
+                    🚀
+                  </div>
+                  <CardTitle>חדשנות מתמדת</CardTitle>
+                  <CardDescription>העולם הדיגיטלי משתנה כל הזמן, ואנחנו דואגים להישאר בחזית עם הכלים והטכנולוגיות החדשות</CardDescription>
                 </CardHeader>
               </Card>
             </Grid>
@@ -78,42 +87,42 @@ export default function AboutPage() {
       </Section>
 
       {/* Team Section */}
-      <Section spacing="lg">
+      <Section spacing="lg" background="default">
         <Container>
           <Stack gap="lg">
             <Stack gap="sm" align="center" className="text-center">
-              <h2 className="text-3xl font-bold">[Team Section Title]</h2>
+              <h2 className="text-3xl font-bold">הצוות שלנו</h2>
               <p className="max-w-2xl text-muted-foreground">
-                [Team section description]
+                אנשים מוכשרים ומסורים שאוהבים את מה שהם עושים
               </p>
             </Stack>
             <Grid cols={4} gap="md">
-              <Card>
+              <Card variant="glass">
                 <CardHeader className="text-center">
-                  <div className="mx-auto mb-4 h-24 w-24 rounded-full bg-muted" />
-                  <CardTitle>[Team Member 1]</CardTitle>
-                  <CardDescription>[Role 1]</CardDescription>
+                  <div className="mx-auto mb-4 h-24 w-24 rounded-full bg-gradient-to-br from-[#22d3ee] to-[#a855f7] opacity-50" />
+                  <CardTitle>[שם חבר צוות 1]</CardTitle>
+                  <CardDescription>מנכ״ל ומייסד</CardDescription>
                 </CardHeader>
               </Card>
-              <Card>
+              <Card variant="glass">
                 <CardHeader className="text-center">
-                  <div className="mx-auto mb-4 h-24 w-24 rounded-full bg-muted" />
-                  <CardTitle>[Team Member 2]</CardTitle>
-                  <CardDescription>[Role 2]</CardDescription>
+                  <div className="mx-auto mb-4 h-24 w-24 rounded-full bg-gradient-to-br from-[#22d3ee] to-[#a855f7] opacity-50" />
+                  <CardTitle>[שם חבר צוות 2]</CardTitle>
+                  <CardDescription>מנהלת שיווק</CardDescription>
                 </CardHeader>
               </Card>
-              <Card>
+              <Card variant="glass">
                 <CardHeader className="text-center">
-                  <div className="mx-auto mb-4 h-24 w-24 rounded-full bg-muted" />
-                  <CardTitle>[Team Member 3]</CardTitle>
-                  <CardDescription>[Role 3]</CardDescription>
+                  <div className="mx-auto mb-4 h-24 w-24 rounded-full bg-gradient-to-br from-[#22d3ee] to-[#a855f7] opacity-50" />
+                  <CardTitle>[שם חבר צוות 3]</CardTitle>
+                  <CardDescription>מפתח בכיר</CardDescription>
                 </CardHeader>
               </Card>
-              <Card>
+              <Card variant="glass">
                 <CardHeader className="text-center">
-                  <div className="mx-auto mb-4 h-24 w-24 rounded-full bg-muted" />
-                  <CardTitle>[Team Member 4]</CardTitle>
-                  <CardDescription>[Role 4]</CardDescription>
+                  <div className="mx-auto mb-4 h-24 w-24 rounded-full bg-gradient-to-br from-[#22d3ee] to-[#a855f7] opacity-50" />
+                  <CardTitle>[שם חבר צוות 4]</CardTitle>
+                  <CardDescription>מעצבת UX/UI</CardDescription>
                 </CardHeader>
               </Card>
             </Grid>
@@ -122,15 +131,17 @@ export default function AboutPage() {
       </Section>
 
       {/* CTA Section */}
-      <Section spacing="lg" background="primary">
+      <Section spacing="lg" background="mesh">
         <Container size="md">
-          <Stack gap="md" align="center" className="text-center">
-            <h2 className="text-3xl font-bold">[CTA Title]</h2>
-            <p className="opacity-90">[CTA description - invite to work together]</p>
-            <Button size="lg" variant="secondary" asChild>
-              <Link href="/contact">[Contact CTA]</Link>
-            </Button>
-          </Stack>
+          <Card variant="gradient" className="p-8 md:p-12">
+            <Stack gap="md" align="center" className="text-center">
+              <h2 className="text-3xl font-bold">בואו נעשה משהו מדהים יחד</h2>
+              <p className="text-muted-foreground max-w-lg">יש לכם רעיון או פרויקט בראש? נשמח לשמוע ולעזור להפוך אותו למציאות</p>
+              <Button size="lg" variant="gradient" asChild>
+                <Link href="/contact">דברו איתנו</Link>
+              </Button>
+            </Stack>
+          </Card>
         </Container>
       </Section>
     </>

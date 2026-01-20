@@ -7,7 +7,13 @@
       "Bash(npm install:*)",
       "Bash(npm run lint)",
       "Bash(npm run typecheck:*)",
-      "Bash(npm run build)"
+      "Bash(npm run build)",
+      "Bash(git add:*)",
+      "Bash(git commit -m \"$\\(cat <<''EOF''\nfeat: Epic B - Hebrew RTL pages skeleton\n\nAdd RTL infrastructure and 4 marketing page skeletons for Hebrew website:\n\n- Add Heebo font for Hebrew text support\n- Configure root layout with dir=\"rtl\" and lang=\"he\"\n- Add RTL CSS utilities and animation overrides\n- Convert 7 components to use logical CSS properties \\(start/end, ms/me/ps/pe\\)\n- Create LtrText component for email/URL/phone isolation\n- Add SiteHeader and SiteFooter with Hebrew navigation\n- Create page skeletons: Home, About, Services, Contact\n\nCo-Authored-By: Claude Opus 4.5 <noreply@anthropic.com>\nEOF\n\\)\")",
+      "Bash(powershell -Command:*)",
+      "Bash(copy \"c:\\\\Users\\\\Micke\\\\Downloads\\\\trievox_logo.png\" \"C:\\\\Users\\\\Micke\\\\OneDrive\\\\Desktop\\\\claudecode\\\\public\\\\logo.png\")",
+      "Bash(copy \"c:\\\\Users\\\\Micke\\\\Downloads\\\\ChatGPT Image Jan 20, 2026, 09_42_04 PM.png\" \"C:\\\\Users\\\\Micke\\\\OneDrive\\\\Desktop\\\\claudecode\\\\public\\\\logo.png\")",
+      "Bash(Remove-Item -Path \".next\" -Recurse -Force -ErrorAction SilentlyContinue)"
     ]
   }
 }

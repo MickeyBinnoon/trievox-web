@@ -5,6 +5,7 @@ export interface FooterLink {
   label: string;
   href: string;
   external?: boolean;
+  icon?: React.ReactNode;
 }
 
 export interface FooterColumnProps extends React.HTMLAttributes<HTMLDivElement> {
@@ -27,17 +28,19 @@ export function FooterColumn({
             {link.external ? (
               <a
                 href={link.href}
-                className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+                className="inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
                 target="_blank"
                 rel="noopener noreferrer"
               >
+                {link.icon && <span className="inline-flex">{link.icon}</span>}
                 {link.label}
               </a>
             ) : (
               <NextLink
                 href={link.href}
-                className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+                className="inline-flex items-center gap-2 text-sm text-muted-foreground transition-colors hover:text-foreground"
               >
+                {link.icon && <span className="inline-flex">{link.icon}</span>}
                 {link.label}
               </NextLink>
             )}

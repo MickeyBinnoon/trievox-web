@@ -31,7 +31,10 @@ export function Footer({
 
   return (
     <footer
-      className={cn("border-t border-border bg-background", className)}
+      className={cn(
+        "border-t border-[rgba(148,163,184,0.1)] bg-[#020617]",
+        className
+      )}
       {...props}
     >
       <Container>
@@ -50,7 +53,12 @@ export function Footer({
                   <a
                     key={social.href}
                     href={social.href}
-                    className="text-muted-foreground transition-colors hover:text-foreground"
+                    className={cn(
+                      "text-muted-foreground",
+                      "hover:text-primary hover:drop-shadow-[0_0_8px_rgba(34,211,238,0.5)]",
+                      "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background",
+                      "rounded-sm transition-all duration-200"
+                    )}
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label={social.label}
@@ -73,7 +81,7 @@ export function Footer({
         </div>
 
         {/* Bottom Bar */}
-        <div className="flex flex-col items-center justify-between gap-4 border-t border-border py-6 md:flex-row">
+        <div className="flex flex-col items-center justify-between gap-4 border-t border-[rgba(148,163,184,0.1)] py-6 md:flex-row">
           <p className="text-sm text-muted-foreground">
             {copyright || `© ${currentYear} All rights reserved.`}
           </p>
@@ -83,7 +91,7 @@ export function Footer({
                 <a
                   key={link.href}
                   href={link.href}
-                  className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+                  className="text-sm text-muted-foreground transition-colors duration-200 hover:text-primary"
                 >
                   {link.label}
                 </a>

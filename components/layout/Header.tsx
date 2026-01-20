@@ -26,7 +26,11 @@ export function Header({
   return (
     <header
       className={cn(
-        "sticky top-0 z-40 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60",
+        // Glass effect navbar
+        "sticky top-0 z-40 w-full",
+        "bg-[rgba(2,6,23,0.8)] backdrop-blur-xl",
+        "border-b border-[rgba(148,163,184,0.1)]",
+        "supports-[backdrop-filter]:bg-[rgba(2,6,23,0.7)]",
         className
       )}
       {...props}
@@ -49,7 +53,14 @@ export function Header({
             {isMobile && navItems.length > 0 && (
               <button
                 type="button"
-                className="inline-flex items-center justify-center rounded-md p-2 hover:bg-muted focus:outline-none focus:ring-2 focus:ring-ring md:hidden"
+                className={cn(
+                  "inline-flex items-center justify-center rounded-xl p-2",
+                  "text-foreground hover:text-primary",
+                  "hover:bg-[rgba(34,211,238,0.1)]",
+                  "focus:outline-none focus:ring-2 focus:ring-primary/50",
+                  "transition-colors duration-200",
+                  "md:hidden"
+                )}
                 onClick={() => setMobileNavOpen(true)}
                 aria-expanded={mobileNavOpen}
                 aria-label="Open menu"

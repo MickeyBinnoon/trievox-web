@@ -7,7 +7,7 @@ import { useAnalytics } from "@/lib/analytics";
 
 export interface ButtonProps
   extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: "primary" | "secondary" | "ghost" | "destructive" | "outline";
+  variant?: "primary" | "secondary" | "ghost" | "destructive" | "outline" | "gradient";
   size?: "sm" | "md" | "lg";
   isLoading?: boolean;
   asChild?: boolean;
@@ -63,27 +63,38 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
         onClick={handleClick}
         className={cn(
           // Base styles
-          "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-md font-medium transition-colors",
-          "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2",
+          "inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-xl font-medium",
+          "transition-all duration-200 ease-out",
+          "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background",
           "disabled:pointer-events-none disabled:opacity-50",
 
-          // Variants
+          // Variants (Logo-aligned colors with stronger glows)
           {
-            "bg-primary text-primary-foreground hover:bg-primary/90":
+            // Primary - Cyan with intense glow
+            "bg-primary text-primary-foreground hover:shadow-[0_0_25px_rgba(0,212,255,0.5),0_0_50px_rgba(0,212,255,0.25)] hover:scale-[1.02] active:scale-[0.98]":
               variant === "primary",
-            "bg-secondary text-secondary-foreground hover:bg-secondary/90":
+            // Secondary - Magenta accent
+            "bg-secondary text-secondary-foreground hover:shadow-[0_0_25px_rgba(192,38,211,0.5),0_0_50px_rgba(192,38,211,0.25)] hover:scale-[1.02] active:scale-[0.98]":
               variant === "secondary",
-            "hover:bg-muted hover:text-foreground": variant === "ghost",
-            "bg-error text-white hover:bg-error/90": variant === "destructive",
-            "border border-border bg-transparent hover:bg-muted":
+            // Ghost - Subtle hover
+            "text-foreground hover:bg-[rgba(0,212,255,0.08)] hover:text-primary":
+              variant === "ghost",
+            // Destructive
+            "bg-error text-white hover:bg-error/90 hover:shadow-[0_0_25px_rgba(239,68,68,0.4)]":
+              variant === "destructive",
+            // Outline - Glass border with cyan hint
+            "border border-[rgba(0,212,255,0.15)] bg-transparent text-foreground hover:border-primary hover:text-primary hover:bg-[rgba(0,212,255,0.06)] hover:shadow-[0_0_20px_rgba(0,212,255,0.15)]":
               variant === "outline",
+            // Gradient - Premium CTA with intense glow (like logo nodes)
+            "bg-gradient-to-r from-[#00d4ff] to-[#c026d3] text-white font-semibold shadow-[0_0_20px_rgba(0,212,255,0.3)] hover:shadow-[0_0_40px_rgba(0,212,255,0.5),0_0_80px_rgba(192,38,211,0.35),0_0_120px_rgba(0,212,255,0.2)] hover:scale-[1.02] active:scale-[0.98]":
+              variant === "gradient",
           },
 
           // Sizes
           {
             "h-8 px-3 text-sm": size === "sm",
-            "h-10 px-4 text-sm": size === "md",
-            "h-12 px-6 text-base": size === "lg",
+            "h-10 px-5 text-sm": size === "md",
+            "h-12 px-8 text-base": size === "lg",
           },
 
           className

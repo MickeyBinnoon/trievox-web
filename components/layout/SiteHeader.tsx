@@ -2,7 +2,6 @@
 
 import Link from "next/link";
 import { Header } from "./Header";
-import { Button } from "@/components/ui";
 import type { NavItem } from "./Nav";
 
 const navItems: NavItem[] = [
@@ -16,16 +15,11 @@ export function SiteHeader() {
   return (
     <Header
       logo={
-        <Link href="/" className="text-xl font-bold">
+        <Link href="/" className="flex items-center h-full text-xl font-bold text-white">
           Trievox
         </Link>
       }
       navItems={navItems}
-      actions={
-        <Button asChild size="sm">
-          <Link href="/contact">התחל עכשיו</Link>
-        </Button>
-      }
     />
   );
 }
