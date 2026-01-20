@@ -2,6 +2,7 @@
 export { Button, type ButtonProps } from "./Button";
 export { Link, type LinkProps } from "./Link";
 export { Badge, type BadgeProps } from "./Badge";
+export { LtrText, type LtrTextProps } from "./LtrText";
 export {
   Card,
   CardHeader,

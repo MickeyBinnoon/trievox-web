@@ -1,4 +1,4 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Heebo } from "next/font/google";
 
 /**
  * Primary sans-serif font for body text and UI.
@@ -20,6 +20,16 @@ export const fontMono = Geist_Mono({
 });
 
 /**
+ * Hebrew-optimized font for RTL text.
+ * Heebo is designed for Hebrew with excellent Latin support.
+ */
+export const fontHeebo = Heebo({
+  variable: "--font-heebo",
+  subsets: ["hebrew", "latin"],
+  display: "swap",
+});
+
+/**
  * Combined font variable classes for use in root layout.
  */
-export const fontVariables = `${fontSans.variable} ${fontMono.variable}`;
+export const fontVariables = `${fontSans.variable} ${fontMono.variable} ${fontHeebo.variable}`;

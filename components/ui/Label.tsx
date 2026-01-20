@@ -20,7 +20,7 @@ export const Label = forwardRef<HTMLLabelElement, LabelProps>(
         {...props}
       >
         {children}
-        {required && <span className="ml-1 text-error">*</span>}
+        {required && <span className="ms-1 text-error">*</span>}
       </label>
     );
   }

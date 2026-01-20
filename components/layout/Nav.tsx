@@ -134,7 +134,7 @@ export function Nav({ items, className, ...props }: NavProps) {
             {isOpen && item.children && (
               <div
                 className={cn(
-                  "absolute left-0 top-full z-50 mt-1 min-w-[200px] rounded-md border border-border bg-background p-4 shadow-lg",
+                  "absolute start-0 top-full z-50 mt-1 min-w-[200px] rounded-md border border-border bg-background p-4 shadow-lg",
                   isGroupArray(item.children) && "min-w-[400px]"
                 )}
                 onMouseEnter={() => handleMouseEnter(index)}

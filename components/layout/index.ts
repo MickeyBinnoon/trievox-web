@@ -22,3 +22,7 @@ export {
   type FooterColumnProps,
   type FooterLink,
 } from "./FooterColumn";
+
+// Site-specific wrappers
+export { SiteHeader } from "./SiteHeader";
+export { SiteFooter } from "./SiteFooter";

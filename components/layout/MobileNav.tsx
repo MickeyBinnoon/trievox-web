@@ -84,7 +84,7 @@ export function MobileNav({ items, open, onOpenChange }: MobileNavProps) {
                 </button>
 
                 {isExpanded && item.children && (
-                  <div className="ml-4 mt-1 border-l border-border pl-4">
+                  <div className="ms-4 mt-1 border-s border-border ps-4">
                     {isGroupArray(item.children) ? (
                       // Grouped items
                       item.children.map((group) => (
