@@ -12,6 +12,30 @@ npm run lint         # ESLint check
 npm run typecheck    # TypeScript check (tsc --noEmit)
 ```
 
+## Deployment (Vercel)
+
+**Production URL:** Deployed on Vercel (auto-deploy from `main` branch)
+
+**Deployment workflow:**
+1. Make changes on feature branch (e.g., `trievox`)
+2. Commit and push to feature branch
+3. Merge feature branch into `main`
+4. Push `main` to trigger Vercel auto-deployment
+
+```bash
+# Example deployment flow
+git add .
+git commit -m "feat: your changes"
+git push origin <branch>
+git checkout main
+git merge <branch>
+git push origin main   # Triggers Vercel deployment
+```
+
+**Branch strategy:**
+- `main` - Production branch (auto-deploys to Vercel)
+- `trievox` - Development branch for new features
+
 ## Epic A Scope
 
 **Included:**
