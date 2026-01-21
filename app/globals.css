@@ -844,3 +844,75 @@ body {
 [dir="rtl"] .slide-out-to-right-full {
   animation-name: slide-out-to-left;
 }
+
+/* ============================================
+   Page Transitions
+   ============================================ */
+
+@keyframes page-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.page-transition {
+  animation: page-fade-in 300ms var(--ease-out) forwards;
+}
+
+/* Modern CSS @starting-style for enter animations (progressive enhancement) */
+@supports (animation-timeline: auto) {
+  .page-transition {
+    animation: none;
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 300ms var(--ease-out), transform 300ms var(--ease-out);
+  }
+
+  @starting-style {
+    .page-transition {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+  }
+}
+
+/* Reduced motion variant */
+.page-transition-reduced {
+  animation: none !important;
+  opacity: 1 !important;
+  transform: none !important;
+  transition: none !important;
+}
+
+/* ============================================
+   Navigation Link Press Effects
+   ============================================ */
+
+/* Nav link selected state for mobile menu */
+.nav-link-selected {
+  background: rgba(0, 212, 255, 0.15) !important;
+  color: var(--color-primary) !important;
+}
+
+/* Animated hamburger icon */
+.hamburger-line {
+  transition: transform 300ms var(--ease-out), opacity 200ms var(--ease-out);
+  transform-origin: center;
+}
+
+.hamburger-open .hamburger-line-1 {
+  transform: translateY(6px) rotate(45deg);
+}
+
+.hamburger-open .hamburger-line-2 {
+  opacity: 0;
+}
+
+.hamburger-open .hamburger-line-3 {
+  transform: translateY(-6px) rotate(-45deg);
+}

@@ -72,7 +72,7 @@ export function Header({
           <div className="flex items-center gap-4">
             {actions}
 
-            {/* Mobile Menu Toggle */}
+            {/* Mobile Menu Toggle - Animated Hamburger */}
             {isMobile && navItems.length > 0 && (
               <button
                 type="button"
@@ -82,11 +82,13 @@ export function Header({
                   "hover:bg-[rgba(0,212,255,0.08)]",
                   "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
                   "transition-colors duration-200",
-                  "md:hidden"
+                  "active:scale-95",
+                  "md:hidden",
+                  mobileNavOpen && "hamburger-open"
                 )}
-                onClick={() => setMobileNavOpen(true)}
+                onClick={() => setMobileNavOpen(!mobileNavOpen)}
                 aria-expanded={mobileNavOpen}
-                aria-label="Open menu"
+                aria-label={mobileNavOpen ? "Close menu" : "Open menu"}
               >
                 <svg
                   className="h-6 w-6"
@@ -97,10 +99,24 @@ export function Header({
                   strokeWidth={2}
                   aria-hidden="true"
                 >
+                  {/* Animated hamburger lines */}
                   <path
+                    className="hamburger-line hamburger-line-1"
                     strokeLinecap="round"
                     strokeLinejoin="round"
-                    d="M4 6h16M4 12h16M4 18h16"
+                    d="M4 6h16"
+                  />
+                  <path
+                    className="hamburger-line hamburger-line-2"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M4 12h16"
+                  />
+                  <path
+                    className="hamburger-line hamburger-line-3"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M4 18h16"
                   />
                 </svg>
               </button>

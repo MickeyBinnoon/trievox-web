@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { Section, Container, Stack, Grid, ContactSection } from "@/components/layout";
+import { Section, Container, Stack, Grid } from "@/components/layout";
 import { Button, Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui";
 
 export default function Home() {
@@ -182,8 +182,6 @@ export default function Home() {
         </Container>
       </Section>
 
-      {/* Contact Section */}
-      <ContactSection />
     </>
   );
 }

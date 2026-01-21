@@ -86,8 +86,9 @@ export function Nav({ items, className, ...props }: NavProps) {
               href={item.href || "#"}
               className={cn(
                 "relative px-3 py-2 text-sm font-medium text-foreground/80 rounded-lg",
-                "transition-colors duration-200",
+                "transition-all duration-200",
                 "hover:text-primary hover:bg-[rgba(0,212,255,0.08)]",
+                "active:scale-[0.97] active:bg-[rgba(0,212,255,0.12)]",
                 "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
                 // Animated underline
                 "after:absolute after:bottom-0.5 after:inset-x-3 after:h-0.5",
@@ -112,8 +113,9 @@ export function Nav({ items, className, ...props }: NavProps) {
               type="button"
               className={cn(
                 "relative inline-flex items-center gap-1 rounded-lg px-3 py-2 text-sm font-medium",
-                "transition-colors duration-200",
+                "transition-all duration-200",
                 "hover:text-primary hover:bg-[rgba(0,212,255,0.08)]",
+                "active:scale-[0.97]",
                 "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
                 // Animated underline
                 "after:absolute after:bottom-0.5 after:inset-x-3 after:h-0.5",
@@ -174,7 +176,12 @@ export function Nav({ items, className, ...props }: NavProps) {
                             <li key={child.href}>
                               <NextLink
                                 href={child.href}
-                                className="block rounded-lg px-2 py-1.5 text-sm text-foreground/70 transition-colors hover:text-primary hover:bg-[rgba(0,212,255,0.08)]"
+                                className={cn(
+                                  "block rounded-lg px-2 py-1.5 text-sm text-foreground/70",
+                                  "transition-all duration-150",
+                                  "hover:text-primary hover:bg-[rgba(0,212,255,0.08)]",
+                                  "active:scale-[0.98] active:bg-[rgba(0,212,255,0.12)]"
+                                )}
                               >
                                 {child.label}
                                 {child.description && (
@@ -196,7 +203,12 @@ export function Nav({ items, className, ...props }: NavProps) {
                       <li key={child.href}>
                         <NextLink
                           href={child.href}
-                          className="block rounded-md px-2 py-1.5 text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+                          className={cn(
+                            "block rounded-md px-2 py-1.5 text-sm text-muted-foreground",
+                            "transition-all duration-150",
+                            "hover:bg-muted hover:text-foreground",
+                            "active:scale-[0.98]"
+                          )}
                         >
                           {child.label}
                           {child.description && (

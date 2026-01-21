@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import NextLink from "next/link";
 import { cn } from "@/lib/utils";
 import {
@@ -26,6 +26,8 @@ function isGroupArray(
   return children.length > 0 && "items" in children[0];
 }
 
+const CLOSE_DELAY_MS = 200;
+
 export function MobileNav({
   items,
   open,
@@ -34,6 +36,20 @@ export function MobileNav({
   ctaHref,
 }: MobileNavProps) {
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
+  const [selectedHref, setSelectedHref] = useState<string | null>(null);
+
+  // Handle link click with visual feedback and delayed close
+  const handleLinkClick = useCallback(
+    (href: string) => {
+      setSelectedHref(href);
+      setTimeout(() => {
+        onOpenChange(false);
+        // Reset selected state after drawer closes
+        setTimeout(() => setSelectedHref(null), 300);
+      }, CLOSE_DELAY_MS);
+    },
+    [onOpenChange]
+  );
 
   return (
     <Drawer open={open} onOpenChange={onOpenChange}>
@@ -54,17 +70,27 @@ export function MobileNav({
             const isExpanded = expandedIndex === index;
 
             if (!hasChildren) {
+              const href = item.href || "#";
+              const isSelected = selectedHref === href;
               return (
                 <NextLink
                   key={item.label}
-                  href={item.href || "#"}
+                  href={href}
                   className={cn(
                     "flex min-h-[44px] items-center rounded-lg px-3 py-2 text-base font-medium",
-                    "text-foreground/80 transition-colors",
+                    "text-foreground/80 transition-all duration-150",
                     "hover:text-primary hover:bg-[rgba(0,212,255,0.08)]",
-                    "active:bg-[rgba(0,212,255,0.12)]"
+                    "active:scale-[0.98] active:bg-[rgba(0,212,255,0.12)]",
+                    isSelected && "nav-link-selected"
                   )}
-                  onClick={() => onOpenChange(false)}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleLinkClick(href);
+                    // Allow navigation after a brief moment
+                    setTimeout(() => {
+                      window.location.href = href;
+                    }, CLOSE_DELAY_MS + 50);
+                  }}
                 >
                   {item.label}
                 </NextLink>
@@ -118,34 +144,64 @@ export function MobileNav({
                             {group.title}
                           </h3>
                           <ul className="space-y-1">
-                            {group.items.map((child) => (
-                              <li key={child.href}>
-                                <NextLink
-                                  href={child.href}
-                                  className="flex min-h-[40px] items-center rounded-lg px-2 py-1.5 text-sm text-foreground/70 transition-colors hover:text-primary hover:bg-[rgba(0,212,255,0.08)]"
-                                  onClick={() => onOpenChange(false)}
-                                >
-                                  {child.label}
-                                </NextLink>
-                              </li>
-                            ))}
+                            {group.items.map((child) => {
+                              const isSelected = selectedHref === child.href;
+                              return (
+                                <li key={child.href}>
+                                  <NextLink
+                                    href={child.href}
+                                    className={cn(
+                                      "flex min-h-[40px] items-center rounded-lg px-2 py-1.5 text-sm text-foreground/70",
+                                      "transition-all duration-150",
+                                      "hover:text-primary hover:bg-[rgba(0,212,255,0.08)]",
+                                      "active:scale-[0.98]",
+                                      isSelected && "nav-link-selected"
+                                    )}
+                                    onClick={(e) => {
+                                      e.preventDefault();
+                                      handleLinkClick(child.href);
+                                      setTimeout(() => {
+                                        window.location.href = child.href;
+                                      }, CLOSE_DELAY_MS + 50);
+                                    }}
+                                  >
+                                    {child.label}
+                                  </NextLink>
+                                </li>
+                              );
+                            })}
                           </ul>
                         </div>
                       ))
                     ) : (
                       // Simple items
                       <ul className="space-y-1">
-                        {item.children.map((child) => (
-                          <li key={child.href}>
-                            <NextLink
-                              href={child.href}
-                              className="flex min-h-[40px] items-center rounded-lg px-2 py-1.5 text-sm text-foreground/70 transition-colors hover:text-primary hover:bg-[rgba(0,212,255,0.08)]"
-                              onClick={() => onOpenChange(false)}
-                            >
-                              {child.label}
-                            </NextLink>
-                          </li>
-                        ))}
+                        {item.children.map((child) => {
+                          const isSelected = selectedHref === child.href;
+                          return (
+                            <li key={child.href}>
+                              <NextLink
+                                href={child.href}
+                                className={cn(
+                                  "flex min-h-[40px] items-center rounded-lg px-2 py-1.5 text-sm text-foreground/70",
+                                  "transition-all duration-150",
+                                  "hover:text-primary hover:bg-[rgba(0,212,255,0.08)]",
+                                  "active:scale-[0.98]",
+                                  isSelected && "nav-link-selected"
+                                )}
+                                onClick={(e) => {
+                                  e.preventDefault();
+                                  handleLinkClick(child.href);
+                                  setTimeout(() => {
+                                    window.location.href = child.href;
+                                  }, CLOSE_DELAY_MS + 50);
+                                }}
+                              >
+                                {child.label}
+                              </NextLink>
+                            </li>
+                          );
+                        })}
                       </ul>
                     )}
                   </div>
@@ -160,10 +216,23 @@ export function MobileNav({
           <div className="mt-auto border-t border-[rgba(148,163,184,0.1)] p-4">
             <Button
               variant="gradient"
-              className="w-full"
+              className={cn(
+                "w-full transition-all duration-150",
+                "active:scale-[0.98]",
+                selectedHref === ctaHref && "ring-2 ring-primary"
+              )}
               asChild
             >
-              <NextLink href={ctaHref} onClick={() => onOpenChange(false)}>
+              <NextLink
+                href={ctaHref}
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleLinkClick(ctaHref);
+                  setTimeout(() => {
+                    window.location.href = ctaHref;
+                  }, CLOSE_DELAY_MS + 50);
+                }}
+              >
                 {ctaLabel}
               </NextLink>
             </Button>
