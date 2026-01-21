@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { cn } from "@/lib/utils";
 import { useIsMobile } from "@/lib/hooks/useMediaQuery";
 import { Container } from "./Container";
@@ -11,6 +11,8 @@ export interface HeaderProps extends React.HTMLAttributes<HTMLElement> {
   logo?: React.ReactNode;
   navItems?: NavItem[];
   actions?: React.ReactNode;
+  ctaLabel?: string;
+  ctaHref?: string;
 }
 
 export function Header({
@@ -18,31 +20,52 @@ export function Header({
   logo,
   navItems = [],
   actions,
+  ctaLabel,
+  ctaHref,
   ...props
 }: HeaderProps) {
   const [mobileNavOpen, setMobileNavOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const isMobile = useIsMobile();
+
+  // Track scroll position for visual effect
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 10);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <header
+      role="banner"
       className={cn(
         // Glass effect navbar
-        "sticky top-0 z-40 w-full",
-        "bg-[rgba(2,6,23,0.8)] backdrop-blur-xl",
+        "sticky top-0 z-40 w-full backdrop-blur-xl transition-all duration-300",
+        // Initial state
         "border-b border-[rgba(148,163,184,0.1)]",
-        "supports-[backdrop-filter]:bg-[rgba(2,6,23,0.7)]",
+        isScrolled
+          ? "bg-[rgba(2,6,23,0.95)] shadow-[0_4px_30px_rgba(0,0,0,0.3)]"
+          : "bg-[rgba(2,6,23,0.8)]",
         className
       )}
       {...props}
     >
       <Container>
+        {/* FIXED: Removed px-4 md:px-16 lg:px-24 - Container provides padding */}
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
           <div className="flex items-center">{logo}</div>
 
           {/* Desktop Navigation */}
           {!isMobile && navItems.length > 0 && (
-            <Nav items={navItems} className="hidden md:flex" />
+            <Nav
+              items={navItems}
+              className="hidden md:flex"
+              aria-label="Main navigation"
+            />
           )}
 
           {/* Actions and Mobile Menu Toggle */}
@@ -54,10 +77,10 @@ export function Header({
               <button
                 type="button"
                 className={cn(
-                  "inline-flex items-center justify-center rounded-xl p-2",
+                  "inline-flex h-11 w-11 items-center justify-center rounded-xl",
                   "text-foreground hover:text-primary",
-                  "hover:bg-[rgba(34,211,238,0.1)]",
-                  "focus:outline-none focus:ring-2 focus:ring-primary/50",
+                  "hover:bg-[rgba(0,212,255,0.08)]",
+                  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
                   "transition-colors duration-200",
                   "md:hidden"
                 )}
@@ -92,6 +115,8 @@ export function Header({
           items={navItems}
           open={mobileNavOpen}
           onOpenChange={setMobileNavOpen}
+          ctaLabel={ctaLabel}
+          ctaHref={ctaHref}
         />
       )}
     </header>

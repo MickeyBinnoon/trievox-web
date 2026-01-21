@@ -9,12 +9,15 @@ import {
   DrawerHeader,
   DrawerTitle,
 } from "@/components/ui/Drawer";
+import { Button } from "@/components/ui/Button";
 import { type NavItem, type NavItemGroup, type NavItemChild } from "./Nav";
 
 export interface MobileNavProps {
   items: NavItem[];
   open: boolean;
   onOpenChange: (open: boolean) => void;
+  ctaLabel?: string;
+  ctaHref?: string;
 }
 
 function isGroupArray(
@@ -23,16 +26,29 @@ function isGroupArray(
   return children.length > 0 && "items" in children[0];
 }
 
-export function MobileNav({ items, open, onOpenChange }: MobileNavProps) {
+export function MobileNav({
+  items,
+  open,
+  onOpenChange,
+  ctaLabel,
+  ctaHref,
+}: MobileNavProps) {
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
 
   return (
     <Drawer open={open} onOpenChange={onOpenChange}>
-      <DrawerContent side="left" className="w-full max-w-xs">
-        <DrawerHeader>
+      <DrawerContent
+        side="left"
+        className={cn(
+          "w-full max-w-xs",
+          "bg-[rgba(2,6,23,0.95)] backdrop-blur-xl",
+          "border-e border-[rgba(148,163,184,0.1)]"
+        )}
+      >
+        <DrawerHeader className="border-b border-[rgba(148,163,184,0.1)]">
           <DrawerTitle>Menu</DrawerTitle>
         </DrawerHeader>
-        <nav className="flex flex-col gap-1 p-4">
+        <nav className="flex flex-col gap-1 p-4" aria-label="Mobile navigation">
           {items.map((item, index) => {
             const hasChildren = item.children && item.children.length > 0;
             const isExpanded = expandedIndex === index;
@@ -42,7 +58,12 @@ export function MobileNav({ items, open, onOpenChange }: MobileNavProps) {
                 <NextLink
                   key={item.label}
                   href={item.href || "#"}
-                  className="rounded-md px-3 py-2 text-sm font-medium text-foreground/80 transition-colors hover:bg-muted hover:text-foreground"
+                  className={cn(
+                    "flex min-h-[44px] items-center rounded-lg px-3 py-2 text-base font-medium",
+                    "text-foreground/80 transition-colors",
+                    "hover:text-primary hover:bg-[rgba(0,212,255,0.08)]",
+                    "active:bg-[rgba(0,212,255,0.12)]"
+                  )}
                   onClick={() => onOpenChange(false)}
                 >
                   {item.label}
@@ -55,9 +76,13 @@ export function MobileNav({ items, open, onOpenChange }: MobileNavProps) {
                 <button
                   type="button"
                   className={cn(
-                    "flex w-full items-center justify-between rounded-md px-3 py-2 text-sm font-medium transition-colors",
-                    "hover:bg-muted hover:text-foreground",
-                    isExpanded ? "bg-muted text-foreground" : "text-foreground/80"
+                    "flex min-h-[44px] w-full items-center justify-between rounded-lg px-3 py-2 text-base font-medium",
+                    "transition-colors duration-200",
+                    "hover:text-primary hover:bg-[rgba(0,212,255,0.08)]",
+                    "active:bg-[rgba(0,212,255,0.12)]",
+                    isExpanded
+                      ? "text-primary bg-[rgba(0,212,255,0.08)]"
+                      : "text-foreground/80"
                   )}
                   onClick={() => setExpandedIndex(isExpanded ? null : index)}
                   aria-expanded={isExpanded}
@@ -97,7 +122,7 @@ export function MobileNav({ items, open, onOpenChange }: MobileNavProps) {
                               <li key={child.href}>
                                 <NextLink
                                   href={child.href}
-                                  className="block rounded-md px-2 py-1.5 text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+                                  className="flex min-h-[40px] items-center rounded-lg px-2 py-1.5 text-sm text-foreground/70 transition-colors hover:text-primary hover:bg-[rgba(0,212,255,0.08)]"
                                   onClick={() => onOpenChange(false)}
                                 >
                                   {child.label}
@@ -114,7 +139,7 @@ export function MobileNav({ items, open, onOpenChange }: MobileNavProps) {
                           <li key={child.href}>
                             <NextLink
                               href={child.href}
-                              className="block rounded-md px-2 py-1.5 text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+                              className="flex min-h-[40px] items-center rounded-lg px-2 py-1.5 text-sm text-foreground/70 transition-colors hover:text-primary hover:bg-[rgba(0,212,255,0.08)]"
                               onClick={() => onOpenChange(false)}
                             >
                               {child.label}
@@ -129,6 +154,21 @@ export function MobileNav({ items, open, onOpenChange }: MobileNavProps) {
             );
           })}
         </nav>
+
+        {/* CTA Button */}
+        {ctaLabel && ctaHref && (
+          <div className="mt-auto border-t border-[rgba(148,163,184,0.1)] p-4">
+            <Button
+              variant="gradient"
+              className="w-full"
+              asChild
+            >
+              <NextLink href={ctaHref} onClick={() => onOpenChange(false)}>
+                {ctaLabel}
+              </NextLink>
+            </Button>
+          </div>
+        )}
       </DrawerContent>
     </Drawer>
   );

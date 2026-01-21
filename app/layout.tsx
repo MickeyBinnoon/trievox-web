@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { fontVariables } from "@/lib/fonts";
-import { SiteHeader, SiteFooter } from "@/components/layout";
+import { SiteHeader, SiteFooter, ContactSection } from "@/components/layout";
+import { Toaster } from "@/components/ui";
 import "./globals.css";
 
 export const metadata: Metadata = {
@@ -24,7 +25,9 @@ export default function RootLayout({
         </a>
         <SiteHeader />
         <main id="main-content">{children}</main>
+        <ContactSection />
         <SiteFooter />
+        <Toaster />
       </body>
     </html>
   );

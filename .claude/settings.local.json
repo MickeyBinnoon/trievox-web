@@ -13,7 +13,10 @@
       "Bash(powershell -Command:*)",
       "Bash(copy \"c:\\\\Users\\\\Micke\\\\Downloads\\\\trievox_logo.png\" \"C:\\\\Users\\\\Micke\\\\OneDrive\\\\Desktop\\\\claudecode\\\\public\\\\logo.png\")",
       "Bash(copy \"c:\\\\Users\\\\Micke\\\\Downloads\\\\ChatGPT Image Jan 20, 2026, 09_42_04 PM.png\" \"C:\\\\Users\\\\Micke\\\\OneDrive\\\\Desktop\\\\claudecode\\\\public\\\\logo.png\")",
-      "Bash(Remove-Item -Path \".next\" -Recurse -Force -ErrorAction SilentlyContinue)"
+      "Bash(Remove-Item -Path \".next\" -Recurse -Force -ErrorAction SilentlyContinue)",
+      "Bash(copy \"c:\\\\Users\\\\Micke\\\\OneDrive\\\\Desktop\\\\logo_full_trans.webp\" \"C:\\\\Users\\\\Micke\\\\OneDrive\\\\Desktop\\\\claudecode\\\\public\\\\logo_full_trans.webp\")",
+      "Bash(findstr:*)",
+      "Bash(git reset:*)"
     ]
   }
 }

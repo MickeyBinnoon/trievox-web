@@ -86,50 +86,6 @@ export default function AboutPage() {
         </Container>
       </Section>
 
-      {/* Team Section */}
-      <Section spacing="lg" background="default">
-        <Container>
-          <Stack gap="lg">
-            <Stack gap="sm" align="center" className="text-center">
-              <h2 className="text-3xl font-bold">הצוות שלנו</h2>
-              <p className="max-w-2xl text-muted-foreground">
-                אנשים מוכשרים ומסורים שאוהבים את מה שהם עושים
-              </p>
-            </Stack>
-            <Grid cols={4} gap="md">
-              <Card variant="glass">
-                <CardHeader className="text-center">
-                  <div className="mx-auto mb-4 h-24 w-24 rounded-full bg-gradient-to-br from-[#22d3ee] to-[#a855f7] opacity-50" />
-                  <CardTitle>[שם חבר צוות 1]</CardTitle>
-                  <CardDescription>מנכ״ל ומייסד</CardDescription>
-                </CardHeader>
-              </Card>
-              <Card variant="glass">
-                <CardHeader className="text-center">
-                  <div className="mx-auto mb-4 h-24 w-24 rounded-full bg-gradient-to-br from-[#22d3ee] to-[#a855f7] opacity-50" />
-                  <CardTitle>[שם חבר צוות 2]</CardTitle>
-                  <CardDescription>מנהלת שיווק</CardDescription>
-                </CardHeader>
-              </Card>
-              <Card variant="glass">
-                <CardHeader className="text-center">
-                  <div className="mx-auto mb-4 h-24 w-24 rounded-full bg-gradient-to-br from-[#22d3ee] to-[#a855f7] opacity-50" />
-                  <CardTitle>[שם חבר צוות 3]</CardTitle>
-                  <CardDescription>מפתח בכיר</CardDescription>
-                </CardHeader>
-              </Card>
-              <Card variant="glass">
-                <CardHeader className="text-center">
-                  <div className="mx-auto mb-4 h-24 w-24 rounded-full bg-gradient-to-br from-[#22d3ee] to-[#a855f7] opacity-50" />
-                  <CardTitle>[שם חבר צוות 4]</CardTitle>
-                  <CardDescription>מעצבת UX/UI</CardDescription>
-                </CardHeader>
-              </Card>
-            </Grid>
-          </Stack>
-        </Container>
-      </Section>
-
       {/* CTA Section */}
       <Section spacing="lg" background="mesh">
         <Container size="md">

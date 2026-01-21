@@ -84,7 +84,17 @@ export function Nav({ items, className, ...props }: NavProps) {
             <NextLink
               key={item.label}
               href={item.href || "#"}
-              className="rounded-md px-3 py-2 text-sm font-medium text-foreground/80 transition-colors hover:bg-muted hover:text-foreground focus:outline-none focus:ring-2 focus:ring-ring"
+              className={cn(
+                "relative px-3 py-2 text-sm font-medium text-foreground/80 rounded-lg",
+                "transition-colors duration-200",
+                "hover:text-primary hover:bg-[rgba(0,212,255,0.08)]",
+                "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
+                // Animated underline
+                "after:absolute after:bottom-0.5 after:inset-x-3 after:h-0.5",
+                "after:bg-gradient-to-r after:from-[#00d4ff] after:to-[#c026d3]",
+                "after:scale-x-0 after:origin-right after:transition-transform after:duration-300",
+                "hover:after:scale-x-100 hover:after:origin-left"
+              )}
             >
               {item.label}
             </NextLink>
@@ -101,9 +111,17 @@ export function Nav({ items, className, ...props }: NavProps) {
             <button
               type="button"
               className={cn(
-                "inline-flex items-center gap-1 rounded-md px-3 py-2 text-sm font-medium transition-colors",
-                "hover:bg-muted hover:text-foreground focus:outline-none focus:ring-2 focus:ring-ring",
-                isOpen ? "bg-muted text-foreground" : "text-foreground/80"
+                "relative inline-flex items-center gap-1 rounded-lg px-3 py-2 text-sm font-medium",
+                "transition-colors duration-200",
+                "hover:text-primary hover:bg-[rgba(0,212,255,0.08)]",
+                "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring",
+                // Animated underline
+                "after:absolute after:bottom-0.5 after:inset-x-3 after:h-0.5",
+                "after:bg-gradient-to-r after:from-[#00d4ff] after:to-[#c026d3]",
+                "after:transition-transform after:duration-300",
+                isOpen
+                  ? "text-primary bg-[rgba(0,212,255,0.08)] after:scale-x-100"
+                  : "text-foreground/80 after:scale-x-0 after:origin-right hover:after:scale-x-100 hover:after:origin-left"
               )}
               aria-expanded={isOpen}
               aria-haspopup="true"
@@ -134,7 +152,10 @@ export function Nav({ items, className, ...props }: NavProps) {
             {isOpen && item.children && (
               <div
                 className={cn(
-                  "absolute start-0 top-full z-50 mt-1 min-w-[200px] rounded-md border border-border bg-background p-4 shadow-lg",
+                  "absolute start-0 top-full z-50 mt-1 min-w-[200px] rounded-xl p-4",
+                  "border border-[rgba(148,163,184,0.1)]",
+                  "bg-[rgba(2,6,23,0.95)] backdrop-blur-xl",
+                  "shadow-[0_4px_30px_rgba(0,0,0,0.3)]",
                   isGroupArray(item.children) && "min-w-[400px]"
                 )}
                 onMouseEnter={() => handleMouseEnter(index)}
@@ -153,7 +174,7 @@ export function Nav({ items, className, ...props }: NavProps) {
                             <li key={child.href}>
                               <NextLink
                                 href={child.href}
-                                className="block rounded-md px-2 py-1.5 text-sm text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+                                className="block rounded-lg px-2 py-1.5 text-sm text-foreground/70 transition-colors hover:text-primary hover:bg-[rgba(0,212,255,0.08)]"
                               >
                                 {child.label}
                                 {child.description && (

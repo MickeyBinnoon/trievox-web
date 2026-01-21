@@ -26,3 +26,10 @@ export {
 // Site-specific wrappers
 export { SiteHeader } from "./SiteHeader";
 export { SiteFooter } from "./SiteFooter";
+
+// Contact
+export { ContactForm } from "./ContactForm";
+export { ContactSection } from "./ContactSection";
+
+// Hero
+export { HeroBackground, type HeroBackgroundProps } from "./HeroBackground";

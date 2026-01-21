@@ -1,96 +1,189 @@
 import Link from "next/link";
-import { Section, Container, Stack, Grid } from "@/components/layout";
-import { Button, Card, CardHeader, CardTitle, CardDescription } from "@/components/ui";
+import { Section, Container, Stack, Grid, ContactSection } from "@/components/layout";
+import { Button, Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui";
 
 export default function Home() {
   return (
     <>
-      {/* Hero Section - Gradient mesh background with floating orbs */}
-      <Section spacing="xl" background="mesh" withOrbs>
+      {/* Hero Section */}
+      <Section spacing="xl" background="mesh" withOrbs className="min-h-[85vh] flex items-center">
         <Container>
           <Stack gap="lg" align="center" className="text-center relative z-10">
-            <h1 className="text-4xl font-extrabold md:text-5xl lg:text-6xl gradient-text tracking-tight">
-              הופכים רעיונות לתוצאות דיגיטליות
+            <h1 className="text-5xl font-extrabold md:text-6xl lg:text-7xl gradient-text tracking-tight">
+              trievox
             </h1>
-            <p className="max-w-2xl text-lg text-muted-foreground leading-relaxed">
-              Trievox מלווה עסקים בדרך להצלחה דיגיטלית עם שיווק חכם, אתרים מרשימים ואוטומציות שחוסכות זמן ומשאבים.
+            <div className="text-2xl md:text-3xl lg:text-4xl font-bold text-white leading-snug">
+              שיווק דיגיטלי, פיתוח אתרים ואוטומציות
+              <br />
+              קח את העסק שלך לצעד הבא
+            </div>
+            <p className="text-base md:text-lg text-muted-foreground">
+              לידים איכותיים חיסכון בזמן וחוויית משתמש - trievox מובילה לתוצאות
             </p>
-            <Stack direction="row" gap="md" className="flex-wrap justify-center pt-2">
-              <Button size="lg" variant="gradient" asChild>
-                <Link href="/contact">בואו נדבר</Link>
-              </Button>
-              <Button size="lg" variant="outline" asChild>
-                <Link href="/services">השירותים שלנו</Link>
-              </Button>
-            </Stack>
+            <Button
+              variant="secondary"
+              size="lg"
+              asChild
+              trackingId="hero-cta"
+              trackingLocation="hero"
+            >
+              <a href="#contact">קביעת שיחת היכרות</a>
+            </Button>
           </Stack>
         </Container>
       </Section>
 
-      {/* Services Overview */}
+      {/* Services Grid */}
       <Section spacing="lg" background="default">
         <Container>
-          <Stack gap="xl">
+          <Grid cols={3} gap="lg">
+            {/* Service 1 - Digital Marketing */}
+            <Card variant="gradient" id="digital-marketing">
+              <CardHeader>
+                <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br from-[#22d3ee] to-[#a855f7] text-2xl shadow-[0_0_20px_rgba(34,211,238,0.3)]">
+                  📈
+                </div>
+                <CardTitle className="text-xl">שיווק דיגיטלי</CardTitle>
+                <CardDescription>קמפיינים שמביאים תוצאות אמיתיות ומגדילים את העסק שלכם</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <ul className="space-y-3 text-sm text-muted-foreground">
+                  <li className="flex items-center gap-2">
+                    <span className="text-primary">✓</span>
+                    ניהול קמפיינים בגוגל ובפייסבוק
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="text-primary">✓</span>
+                    אסטרטגיית תוכן ורשתות חברתיות
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="text-primary">✓</span>
+                    קידום אורגני (SEO)
+                  </li>
+                </ul>
+              </CardContent>
+            </Card>
+
+            {/* Service 2 - Website Development */}
+            <Card variant="gradient" id="website-development">
+              <CardHeader>
+                <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br from-[#22d3ee] to-[#a855f7] text-2xl shadow-[0_0_20px_rgba(34,211,238,0.3)]">
+                  💻
+                </div>
+                <CardTitle className="text-xl">בניית אתרים</CardTitle>
+                <CardDescription>אתרים שנראים מעולה ועובדים עוד יותר טוב</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <ul className="space-y-3 text-sm text-muted-foreground">
+                  <li className="flex items-center gap-2">
+                    <span className="text-primary">✓</span>
+                    עיצוב מותאם אישית למותג
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="text-primary">✓</span>
+                    אתרים מהירים ומותאמים לנייד
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="text-primary">✓</span>
+                    חנויות אונליין ומערכות ניהול
+                  </li>
+                </ul>
+              </CardContent>
+            </Card>
+
+            {/* Service 3 - Business Automations */}
+            <Card variant="gradient" id="business-automations">
+              <CardHeader>
+                <div className="mb-4 flex h-14 w-14 items-center justify-center rounded-xl bg-gradient-to-br from-[#22d3ee] to-[#a855f7] text-2xl shadow-[0_0_20px_rgba(34,211,238,0.3)]">
+                  ⚙️
+                </div>
+                <CardTitle className="text-xl">אוטומציות עסקיות</CardTitle>
+                <CardDescription>פתרונות שחוסכים זמן ומאפשרים לעסק לעבוד חכם יותר</CardDescription>
+              </CardHeader>
+              <CardContent>
+                <ul className="space-y-3 text-sm text-muted-foreground">
+                  <li className="flex items-center gap-2">
+                    <span className="text-primary">✓</span>
+                    אוטומציה של תהליכים חוזרים
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="text-primary">✓</span>
+                    חיבור בין מערכות ואפליקציות
+                  </li>
+                  <li className="flex items-center gap-2">
+                    <span className="text-primary">✓</span>
+                    בוטים וצ׳אטבוטים חכמים
+                  </li>
+                </ul>
+              </CardContent>
+            </Card>
+          </Grid>
+        </Container>
+      </Section>
+
+      {/* Process Section */}
+      <Section spacing="lg" background="muted">
+        <Container>
+          <Stack gap="lg">
             <Stack gap="sm" align="center" className="text-center">
-              <h2 className="text-3xl font-bold tracking-tight">מה אנחנו עושים?</h2>
-              <p className="max-w-2xl text-muted-foreground leading-relaxed">
-                אנחנו מציעים מגוון פתרונות דיגיטליים שיעזרו לעסק שלכם לצמוח ולהתבלט
+              <h2 className="text-3xl font-bold">איך זה עובד?</h2>
+              <p className="max-w-2xl text-muted-foreground">
+                תהליך עבודה פשוט ושקוף שמבטיח תוצאות
               </p>
             </Stack>
-            <Grid cols={3} gap="lg">
-              <Card variant="glass">
-                <CardHeader>
-                  <div className="mb-5 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-[#00d4ff] to-[#c026d3] text-3xl shadow-[0_0_25px_rgba(0,212,255,0.3)]">
-                    📈
-                  </div>
-                  <CardTitle className="text-xl">שיווק דיגיטלי</CardTitle>
-                  <CardDescription className="leading-relaxed">קמפיינים ממוקדים שמביאים לקוחות איכותיים ומגדילים את החשיפה שלכם ברשת</CardDescription>
-                </CardHeader>
-              </Card>
-              <Card variant="glass">
-                <CardHeader>
-                  <div className="mb-5 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-[#00d4ff] to-[#c026d3] text-3xl shadow-[0_0_25px_rgba(0,212,255,0.3)]">
-                    💻
-                  </div>
-                  <CardTitle className="text-xl">בניית אתרים</CardTitle>
-                  <CardDescription className="leading-relaxed">אתרים מעוצבים ומותאמים אישית שמספרים את הסיפור שלכם ומניעים לפעולה</CardDescription>
-                </CardHeader>
-              </Card>
-              <Card variant="glass">
-                <CardHeader>
-                  <div className="mb-5 flex h-16 w-16 items-center justify-center rounded-2xl bg-gradient-to-br from-[#00d4ff] to-[#c026d3] text-3xl shadow-[0_0_25px_rgba(0,212,255,0.3)]">
-                    ⚙️
-                  </div>
-                  <CardTitle className="text-xl">אוטומציות עסקיות</CardTitle>
-                  <CardDescription className="leading-relaxed">פתרונות חכמים שמייעלים תהליכים, חוסכים זמן ומאפשרים לכם להתמקד בעיקר</CardDescription>
-                </CardHeader>
-              </Card>
+            <Grid cols={4} gap="md">
+              <Stack gap="sm" align="center" className="text-center">
+                <div className="flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-[#22d3ee] to-[#a855f7] text-white font-bold text-lg shadow-[0_0_20px_rgba(34,211,238,0.3)]">
+                  1
+                </div>
+                <h3 className="font-semibold text-foreground">שיחת היכרות</h3>
+                <p className="text-sm text-muted-foreground">נכיר את העסק שלכם, המטרות והאתגרים</p>
+              </Stack>
+              <Stack gap="sm" align="center" className="text-center">
+                <div className="flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-[#22d3ee] to-[#a855f7] text-white font-bold text-lg shadow-[0_0_20px_rgba(34,211,238,0.3)]">
+                  2
+                </div>
+                <h3 className="font-semibold text-foreground">בניית תוכנית</h3>
+                <p className="text-sm text-muted-foreground">נבנה אסטרטגיה מותאמת אישית לצרכים שלכם</p>
+              </Stack>
+              <Stack gap="sm" align="center" className="text-center">
+                <div className="flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-[#22d3ee] to-[#a855f7] text-white font-bold text-lg shadow-[0_0_20px_rgba(34,211,238,0.3)]">
+                  3
+                </div>
+                <h3 className="font-semibold text-foreground">יציאה לדרך</h3>
+                <p className="text-sm text-muted-foreground">מתחילים לעבוד ומעדכנים אתכם בכל שלב</p>
+              </Stack>
+              <Stack gap="sm" align="center" className="text-center">
+                <div className="flex h-14 w-14 items-center justify-center rounded-full bg-gradient-to-br from-[#22d3ee] to-[#a855f7] text-white font-bold text-lg shadow-[0_0_20px_rgba(34,211,238,0.3)]">
+                  4
+                </div>
+                <h3 className="font-semibold text-foreground">מדידה ושיפור</h3>
+                <p className="text-sm text-muted-foreground">עוקבים אחרי התוצאות ומשפרים באופן מתמיד</p>
+              </Stack>
             </Grid>
-            <div className="text-center pt-4">
-              <Button variant="outline" asChild>
-                <Link href="/services">לכל השירותים</Link>
-              </Button>
-            </div>
           </Stack>
         </Container>
       </Section>
 
       {/* CTA Section */}
-      <Section spacing="lg" background="mesh" withOrbs>
+      <Section spacing="lg" background="mesh">
         <Container size="md">
-          <Card variant="gradient" className="p-8 md:p-12 relative z-10">
-            <Stack gap="lg" align="center" className="text-center">
-              <h2 className="text-3xl font-bold tracking-tight">מוכנים להתחיל?</h2>
-              <p className="text-muted-foreground max-w-lg leading-relaxed">
-                ספרו לנו על העסק שלכם ונבנה יחד תוכנית פעולה שתקדם אתכם קדימה
+          <Card variant="gradient" className="p-8 md:p-12">
+            <Stack gap="md" align="center" className="text-center">
+              <h2 className="text-3xl font-bold">מוכנים לקחת את העסק לשלב הבא?</h2>
+              <p className="text-muted-foreground max-w-lg">
+                ספרו לנו על האתגרים שלכם ונמצא יחד את הפתרון המתאים
               </p>
               <Button size="lg" variant="gradient" asChild>
-                <Link href="/contact">צרו קשר עכשיו</Link>
+                <Link href="#contact">בואו נתחיל</Link>
               </Button>
             </Stack>
           </Card>
         </Container>
       </Section>
+
+      {/* Contact Section */}
+      <ContactSection />
     </>
   );
 }

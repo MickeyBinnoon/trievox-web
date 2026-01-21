@@ -13,10 +13,10 @@ export const Container = forwardRef<HTMLDivElement, ContainerProps>(
         className={cn(
           "mx-auto w-full px-4 sm:px-6 lg:px-8",
           {
-            "max-w-screen-sm": size === "sm",
-            "max-w-screen-md": size === "md",
-            "max-w-screen-lg": size === "lg",
-            "max-w-screen-xl": size === "xl",
+            "max-w-2xl": size === "sm",      // 672px
+            "max-w-4xl": size === "md",      // 896px
+            "max-w-6xl": size === "lg",      // 1152px
+            "max-w-7xl": size === "xl",      // 1280px
             "max-w-none": size === "full",
           },
           className
